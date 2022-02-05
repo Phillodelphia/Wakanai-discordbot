@@ -45,7 +45,7 @@ client.on('messageCreate', async (message) => {
       .split(" ");
 
     // Monster Hunter Rise lookup
-    if (CMD_NAME == "mhrlookup") {
+    if (CMD_NAME == "mhr") {
       if (args != undefined) {
         try {
         const { data } = await axios.get(url + '/' + args);
