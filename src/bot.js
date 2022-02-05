@@ -79,6 +79,10 @@ client.on('messageCreate', async (message) => {
           fields: [
             Object.values(jsonified)
           ],
+          footer: { 
+            text: 'https://github.com/Phillodelphia/Wakanai-discordbot', 
+            iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png' 
+          },
         };
         message.channel.send({ embeds: [embeded] });
         }
