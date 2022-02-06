@@ -45,19 +45,22 @@ client.on('messageCreate', async (message) => {
       .substring(prefix.length)
       .split(" ");
 
-    // Monster Hunter Rise lookup
+    // Help menu
     if (CMD_NAME == "help") {
       help(message)
     }
+    // Monster Hunter Rise lookup
     else if (CMD_NAME == "mhr") {
       mhr(args, message);
     }
+    // Danbooru lookups 
     else if(CMD_NAME == "manga") {
       dlookup(args, message);
     }
   }
 });
 
+//Help function
 function help(message) {
   message.channel.send(
     "Hello my name is Wakanai! My prefix is [$]. \n" +
@@ -67,6 +70,7 @@ function help(message) {
     );
 }
 
+// Danbooru lookup
 function dlookup(args, message) {
   args = args.join('_');
   const booru = new Danbooru();
@@ -88,6 +92,7 @@ function dlookup(args, message) {
 
 }
 
+// Monster hunter lookup
 async function mhr(args, message) {
   if (args != undefined) {
     try {
