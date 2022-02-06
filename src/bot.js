@@ -46,7 +46,10 @@ client.on('messageCreate', async (message) => {
       .split(" ");
 
     // Monster Hunter Rise lookup
-    if (CMD_NAME == "mhr") {
+    if (CMD_NAME == "help") {
+      help(message)
+    }
+    else if (CMD_NAME == "mhr") {
       mhr(args, message);
     }
     else if(CMD_NAME == "manga") {
@@ -55,15 +58,25 @@ client.on('messageCreate', async (message) => {
   }
 });
 
+function help(message) {
+  message.channel.send(
+    "Hello my name is Wakanai! My prefix is [$]. \n" +
+    "----------Command Available---------- \n" +
+    "$manga <input> | Look up an image on Danbooru based on your input, without input it will look up a completely random image. \n" +
+    "$mhr <input> | Look up a monster from Monster Hunter Rise based on input. "
+    );
+}
+
 function dlookup(args, message) {
+  args = args.join('_');
   const booru = new Danbooru();
   booru.posts({ tags: 'rating:safe order:random '+args }).then(posts => {
     // Select a random post from posts array
-    if (posts.length === 0){
+    if (posts.length < 1){
       message.channel.send("Couldn't find any matches :( try again.");
     }else{
-    const index = Math.floor(Math.random() * posts.length)
-    const post = posts[index]
+    const index = Math.floor(Math.random() * posts.length);
+    const post = posts[index];
     console.log(`Looked up ${args}`);
     console.log(post.file_url);
     console.log(post.md5);
@@ -78,6 +91,8 @@ function dlookup(args, message) {
 async function mhr(args, message) {
   if (args != undefined) {
     try {
+    args = args.join('+');
+    console.log(args)
     const { data } = await axios.get(url + '/' + args);
 
     const $ = cheerio.load(data);
@@ -103,12 +118,12 @@ async function mhr(args, message) {
       color: 0x0099ff,
       title: title,
       url: `${url}/${args}`,
+      thumbnail: {
+        url: img
+      },
       fields: [
         Object.values(jsonified),
       ],
-      image: {
-        url: img
-      },
       footer: { 
         text: 'https://github.com/Phillodelphia/Wakanai-discordbot', 
         iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png' 
