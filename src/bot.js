@@ -97,7 +97,6 @@ async function mhr(args, message) {
   if (args != undefined) {
     try {
     args = args.join('+');
-    console.log(args)
     const { data } = await axios.get(url + '/' + args);
 
     const $ = cheerio.load(data);
