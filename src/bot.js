@@ -6,6 +6,9 @@ const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_PRESENC
 const axios = require("axios");
 const cheerio = require("cheerio");
 const pretty = require("pretty");
+const express = require("express");
+const app = express();
+const port = 3000;
 
 const PORT = process.env.PORT || 3000;
 const prefix = '$';
@@ -14,6 +17,12 @@ const url = 'https://monsterhunterrise.wiki.fextralife.com';
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+
+app.get('/', (req, res) => res.send('bruh'));
+
+app.listen(port, () => 
+console.log(`site is upp at http://localhost:${port}`) 
+);
 
 //client.on('presenceUpdate', async (oldPresence, newPresence) => {
 //  let targetUser = newPresence.member;
