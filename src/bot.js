@@ -57,22 +57,67 @@ client.on('messageCreate', async (message) => {
     else if(CMD_NAME == "manga") {
       dlookup(args, message);
     }
+    else if(CMD_NAME == "doujin") {
+      hlookup(args, message);
+    }
   }
 });
 
 //Help function
 function help(message) {
-  message.channel.send(
-    "Hello my name is Wakanai! My prefix is [$]. \n" +
-    "----------Command Available---------- \n" +
-    "$manga <input> | Look up an image on Danbooru based on your input, without input it will look up a completely random image. \n" +
-    "$mhr <input> | Look up a monster from Monster Hunter Rise based on input. "
-    );
+  console.log(client.user.avatarURL());
+  const embeded = {
+    color: 0x0099ff,
+    image: { url: client.user.avatarURL() },
+    author: {
+      name: client.user.username,
+      iconURL: client.user.avatarURL(),
+      url: 'https://github.com/Phillodelphia/Wakanai-discordbot',
+    },
+    description: 'Hello my name is Wakanai! My prefix is [$].',
+    fields: [
+      {
+        name: 'mhr',
+        value: '$mhr <input> | Look up a monster from Monster Hunter Rise based on input.',
+      },
+      {
+        name: 'manga',
+        value: '$manga <input> | Look up an image on Danbooru based on your input, without input it will look up a completely random image.',
+      },
+    ],
+  }
+  message.channel.send({ embeds: [embeded] });
+}
+
+function hlookup(args, message) {
+  args = args.join('_');
+  if (args == "") {
+    return;
+  }
+  const booru = new Danbooru();
+  booru.posts({ tags: 'order:random '+args }).then(posts => {
+    // Select a random post from posts array
+    if (posts.length < 1){
+      message.channel.send("Couldn't find any matches :( try again.");
+    }else{
+    const index = Math.floor(Math.random() * posts.length);
+    const post = posts[index];
+    console.log(`Looked up ${args}`);
+    console.log(post.file_url);
+    console.log(post.md5);
+    console.log(post.file_ext);
+
+    message.channel.send({files: [post.file_url]});
+  }
+});
 }
 
 // Danbooru lookup
 function dlookup(args, message) {
   args = args.join('_');
+  if (args == "") {
+    return;
+  }
   const booru = new Danbooru();
   booru.posts({ tags: 'rating:safe order:random '+args }).then(posts => {
     // Select a random post from posts array
