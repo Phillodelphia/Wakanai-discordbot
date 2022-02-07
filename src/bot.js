@@ -65,7 +65,6 @@ client.on('messageCreate', async (message) => {
 
 //Help function
 function help(message) {
-  console.log(client.user.avatarURL());
   const embeded = {
     color: 0x0099ff,
     image: { url: client.user.avatarURL() },
