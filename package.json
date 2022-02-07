@@ -2,7 +2,7 @@
   "name": "test-bot",
   "version": "1.0.0",
   "description": "just testing out stuff",
-  "main": "index.js",
+  "main": "src/bot.js",
   "scripts": {
     "start": "node ./src/bot.js",
     "mon": "nodemon ./src/bot.js"
