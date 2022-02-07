@@ -7,6 +7,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const pretty = require("pretty");
 
+const PORT = process.env.PORT || 3000;
 const prefix = '$';
 const url = 'https://monsterhunterrise.wiki.fextralife.com';
 
