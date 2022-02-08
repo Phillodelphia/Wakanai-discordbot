@@ -91,7 +91,7 @@ function help(message) {
 function hlookup(args, message) {
   args = args.join('_');
   const booru = new Danbooru();
-  booru.posts({ limit: 100, tags: 'order:random '+args }).then(posts => {
+  booru.posts({ tags: 'limit: 100 order:random '+args }).then(posts => {
     // Select a random post from posts array
     if (posts.length < 1){
       message.channel.send("Couldn't find any matches :( try again.");
@@ -112,7 +112,7 @@ function hlookup(args, message) {
 function dlookup(args, message) {
   args = args.join('_');
   const booru = new Danbooru();
-  booru.posts({ limit: 100, tags: 'rating:safe order:random '+args }).then(posts => {
+  booru.posts({ tags: 'limit:100 rating:safe order:random '+args }).then(posts => {
     // Select a random post from posts array
     if (posts.length < 1){
       message.channel.send("Couldn't find any matches :( try again.");
