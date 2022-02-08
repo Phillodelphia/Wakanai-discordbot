@@ -90,8 +90,11 @@ function help(message) {
 
 function hlookup(args, message) {
   args = args.join('_');
+  if (args == "") {
+    return;
+  }
   const booru = new Danbooru();
-  booru.posts({ tags: 'limit: 100 order:random '+args }).then(posts => {
+  booru.posts({ tags: 'order:random '+args }).then(posts => {
     // Select a random post from posts array
     if (posts.length < 1){
       message.channel.send("Couldn't find any matches :( try again.");
@@ -111,8 +114,11 @@ function hlookup(args, message) {
 // Danbooru lookup
 function dlookup(args, message) {
   args = args.join('_');
+  if (args == "") {
+    return;
+  }
   const booru = new Danbooru();
-  booru.posts({ tags: 'limit:100 rating:safe order:random '+args }).then(posts => {
+  booru.posts({ tags: 'rating:safe order:random '+args }).then(posts => {
     // Select a random post from posts array
     if (posts.length < 1){
       message.channel.send("Couldn't find any matches :( try again.");
@@ -120,7 +126,6 @@ function dlookup(args, message) {
     const index = Math.floor(Math.random() * posts.length);
     const post = posts[index];
     console.log(`Looked up ${args}`);
-    console.log(posts);
     console.log(post.file_url);
     console.log(post.md5);
     console.log(post.file_ext);
