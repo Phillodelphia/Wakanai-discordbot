@@ -187,7 +187,7 @@ async function mhr(args, message) {
 
 async function cardgame(args, message) {
   addPlayer(message.author.id);
-  console.log(getPlayer(message.author.id));
+  message.channel.send(`Hello ${message.author.username}! You currently have ${getPlayer(message.author.id)['Currency']} Currency you dumbass.`);
 }
 
 client.login(process.env.DISCORD_TOKEN);

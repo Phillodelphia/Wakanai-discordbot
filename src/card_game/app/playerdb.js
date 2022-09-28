@@ -4,9 +4,8 @@ let template = { "Currency": 100, "Wins": 0, "Loses": 0, "Collection": [] };
 
 //Returns specific player data
 function getPlayer(playerId) {
-    return fs.readFile(dataPath + playerId + ".json", (err, data) => {
-        let parsedData = JSON.parse(data);
-    });
+    let data = fs.readFileSync(dataPath + playerId + ".json");
+    return JSON.parse(data);
 }
 //Add new player to the game
 function addPlayer(playerId) {
