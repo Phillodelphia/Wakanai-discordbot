@@ -7,6 +7,7 @@ class Card {
         this.damage = damage;
         this.health = health;
     }
+    //used in the future battle system
     attack(target) {
         target.health -= this.getDamage();
     }
@@ -27,4 +28,4 @@ class Card {
     }
 }
 
-return modules.exports(Card);
+return module.exports(Card);

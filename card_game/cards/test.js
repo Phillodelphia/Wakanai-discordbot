@@ -1,6 +1,6 @@
 
-const card = require(app/card.js);
+const card = require("app/card.js");
 
-class test extends card{
+class test extends Card{
     
 }
