@@ -1,11 +1,11 @@
 require('dotenv').config();
-const Danbooru = require('danbooru')
+const { getPlayer, addPlayer } = require("./card_game/app/playerdb.js");
+const Danbooru = require('danbooru');
 
 const { Client, Intents, Guild, Channel, Message, MessageEmbed  } = require('discord.js');
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_PRESENCES", "GUILD_MEMBERS", "GUILD_VOICE_STATES"] });
 const axios = require("axios");
 const cheerio = require("cheerio");
-const pretty = require("pretty");
 
 const prefix = '$';
 const url = 'https://monsterhunterrise.wiki.fextralife.com';
@@ -186,7 +186,8 @@ async function mhr(args, message) {
 }
 
 async function cardgame(args, message) {
-  //implement later 
+  addPlayer(message.author.id);
+  console.log(getPlayer(message.author.id));
 }
 
 client.login(process.env.DISCORD_TOKEN);
