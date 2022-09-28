@@ -57,8 +57,8 @@ client.on('messageCreate', async (message) => {
     else if(CMD_NAME == "manga") {
       dlookup(args, message);
     }
-    else if(CMD_NAME == "doujin") {
-      hlookup(args, message);
+    else if(CMD_NAME == "card") {
+      cardgame(args, message);
     }
   }
 });
@@ -183,6 +183,10 @@ async function mhr(args, message) {
       message.channel.send(`Error: ${args} is not a monster from monster hunter you dumbass`);
     }
   } 
+}
+
+async function cardgame(args, message) {
+  //implement later 
 }
 
 client.login(process.env.DISCORD_TOKEN);
