@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { getPlayer, addPlayer } = require("./card_game/app/playerdb.js");
+const { prepCard } = require("./card_game/app/gamedb.js")
 const Danbooru = require('danbooru');
 
 const { Client, Intents, Guild, Channel, Message, MessageEmbed  } = require('discord.js');
@@ -12,6 +13,8 @@ const url = 'https://monsterhunterrise.wiki.fextralife.com';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  //at boot prepare card database
+  prepCard();
 });
 
 //client.on('presenceUpdate', async (oldPresence, newPresence) => {
@@ -186,7 +189,8 @@ async function mhr(args, message) {
 }
 
 async function cardgame(args, message) {
-  addPlayer(message.author.id);
+  //addPlayer(message.author.id);
+  
   message.channel.send(`Hello ${message.author.username}! You currently have ${getPlayer(message.author.id)['Currency']} Currency you dumbass.`);
 }
 

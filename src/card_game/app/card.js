@@ -1,7 +1,7 @@
 class Card {
-    constructor(name, img, category, rarity, damage, health) {
+    constructor(name, category, rarity, damage, health) {
         this.name = name;
-        this.img = img;
+        this.img = "../assets/cards_img/" + name + ".png";
         this.category = category;
         this.rarity = rarity;
         this.damage = damage;
@@ -28,4 +28,4 @@ class Card {
     }
 }
 
-return module.exports(Card);
+module.export = { Card };

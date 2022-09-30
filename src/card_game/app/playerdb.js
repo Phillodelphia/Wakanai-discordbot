@@ -1,6 +1,6 @@
 const fs = require("fs");
-let dataPath = "src/card_game/app/data/";
-let template = { "Currency": 100, "Wins": 0, "Loses": 0, "Collection": [] };
+const dataPath = "src/card_game/app/data/";
+const template = { "Currency": 100, "Wins": 0, "Loses": 0, "Collection": [] };
 
 //Returns specific player data
 function getPlayer(playerId) {
@@ -16,4 +16,4 @@ function addPlayer(playerId) {
     });
 }
 
-return module.exports = { getPlayer, addPlayer };
+module.exports = { getPlayer, addPlayer };
