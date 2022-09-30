@@ -1,3 +1,4 @@
+//Card metadata used when trading and collecting
 class Card {
     constructor(name, category, rarity, damage, health) {
         this.name = name;
@@ -28,4 +29,4 @@ class Card {
     }
 }
 
-module.export = { Card };
+module.exports.Card = Card;

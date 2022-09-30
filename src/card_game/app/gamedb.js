@@ -16,7 +16,8 @@ function prepCard() {
         //listing all files using forEach
         files.forEach(function (file) {
             let data = JSON.parse(fs.readFileSync(dirPath + "/" + file));
-            cardsDB[data['RARITY']].push(file);
+            let card = new Card(data['NAME'], data['CATEGORY'], data['RARITY'], data['DAMAGE'], data['HEALTH']);
+            cardsDB[data['RARITY']].push(card);
         });
     });
 }
