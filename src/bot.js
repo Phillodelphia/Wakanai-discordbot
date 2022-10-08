@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { getPlayer, addPlayer } = require("./card_game/app/playerdb.js");
-const { prepCard } = require("./card_game/app/gamedb.js")
+const { prepCard, getCategory } = require("./card_game/app/gamedb.js")
 const Danbooru = require('danbooru');
 
 const { Client, Intents, Guild, Channel, Message, MessageEmbed  } = require('discord.js');
@@ -189,9 +189,11 @@ async function mhr(args, message) {
 }
 
 async function cardgame(args, message) {
-  //addPlayer(message.author.id);
-  
-  message.channel.send(`Hello ${message.author.username}! You currently have ${getPlayer(message.author.id)['Currency']} Currency you dumbass.`);
+  const cardCat = getCategory(args);
+  message.channel.send(`Category: ${args}`);
+  cardCat.forEach((card) => {
+    message.channel.send(`${card.name}`);
+  });
 }
 
 client.login(process.env.DISCORD_TOKEN);
