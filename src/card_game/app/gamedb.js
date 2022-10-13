@@ -16,6 +16,10 @@ function prepCard() {
         files.forEach(function (file) {
             let data = JSON.parse(fs.readFileSync(dirPath + "/" + file));
             let card = new Card(data['NAME'], data['CATEGORY'], data['RARITY'], data['DAMAGE'], data['HEALTH']);
+            //If new category is detected, add a new section
+            if (!categoryDB[card.category]) {
+                categoryDB[card.category] = [];
+            }
             categoryDB[card.category].push(card);
             rarityDB[data['RARITY']].push(card);
         });
@@ -23,13 +27,18 @@ function prepCard() {
 }
 
 function getCategory(title) {
-    const cardList = [];
-    if (title != undefined) {
+    const returnList = [];
+    if (title) {
         categoryDB[title].forEach((card) =>  {
-            cardList.push(card);
+            returnList.push(card);
         });
     }
-    return cardList;
+    else {
+        for (const [ key ] of Object.entries(categoryDB)) {
+            returnList.push(key);
+        }
+    }
+    return returnList;
 }
 
 module.exports = { prepCard, getCategory };
