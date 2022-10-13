@@ -8,10 +8,6 @@ class Card {
         this.damage = damage;
         this.health = health;
     }
-    //used in the future battle system
-    attack(target) {
-        target.health -= this.getDamage();
-    }
     getName() {
         return this.name;
     }

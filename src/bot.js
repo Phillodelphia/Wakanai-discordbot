@@ -189,9 +189,38 @@ async function mhr(args, message) {
 }
 
 async function cardgame(args, message) {
-  //addPlayer(message.author.id);
-  
-  message.channel.send(`Hello ${message.author.username}! You currently have ${getPlayer(message.author.id)['Currency']} Currency you dumbass.`);
+  if (args != undefined) {
+    if (args == "register") {
+      registerPlayer(message);
+    }
+    else if (args == "info") {
+      getInfo(message);
+    }
+  }
 }
 
+async function getInfo(message) {
+  const user = getPlayer(message.author.id); 
+  const embeded = {
+    color: 0x0099ff,
+    title: message.author.username,
+    fields: [
+      {
+        name: 'Currency',
+        value: '' + user['Currency'],
+      },
+    ],
+  };
+  message.channel.send({ embeds: [embeded] });
+}
+
+async function registerPlayer(message) {
+  if (getPlayer(message.author.id) == null) {
+    addPlayer(message.author.id);
+    message.channel.send(`There we go! your account is set up! Welcome!`);
+  }
+  else {
+    message.channel.send(`Huh weird, why are you trying to create an account when you already have one? Very funny ${message.author.username}. Very funny. Graduated clown school recently? I noticed. You will hereby receive the official clown reward rewarding you for how funny you are`);
+  }
+}
 client.login(process.env.DISCORD_TOKEN);
