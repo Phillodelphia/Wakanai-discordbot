@@ -28,12 +28,17 @@ function prepCard() {
 
 function getCategory(title) {
     const returnList = [];
-    if (title) {
+    title = title
+        .join('_')
+        .toLowerCase();
+    if (title && title in categoryDB) {
         categoryDB[title].forEach((card) =>  {
             returnList.push(card);
         });
     }
     else {
+        //temporary change, make sure to change this logic
+        return null;
         for (const [ key ] of Object.entries(categoryDB)) {
             returnList.push(key);
         }

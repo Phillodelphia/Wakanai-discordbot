@@ -190,10 +190,17 @@ async function mhr(args, message) {
 
 async function cardgame(args, message) {
   const cardCat = getCategory(args);
-  message.channel.send(`Category: ${args}`);
-  cardCat.forEach((card) => {
-    message.channel.send(`${card.name}`);
-  });
+  args = args
+    .join('_')
+    .replace('_', ' ')
+    .toUpperCase();
+  if (cardCat == null) { message.channel.send(`Sorry @${message.author.username}. The category inputted is made up in your head. Please make sure to input an actual category.`) }
+  else {
+    message.channel.send(`Category: ${args}`);
+    cardCat.forEach((card) => {
+      message.channel.send(`${card.name}`);
+    });
+  }
 }
 
 async function registerPlayer(message) {
