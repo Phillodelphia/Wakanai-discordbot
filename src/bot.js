@@ -189,37 +189,11 @@ async function mhr(args, message) {
 }
 
 async function cardgame(args, message) {
-<<<<<<< HEAD
   const cardCat = getCategory(args);
   message.channel.send(`Category: ${args}`);
   cardCat.forEach((card) => {
     message.channel.send(`${card.name}`);
   });
-=======
-  if (args != undefined) {
-    if (args == "register") {
-      registerPlayer(message);
-    }
-    else if (args == "info") {
-      getInfo(message);
-    }
-  }
-}
-
-async function getInfo(message) {
-  const user = getPlayer(message.author.id); 
-  const embeded = {
-    color: 0x0099ff,
-    title: message.author.username,
-    fields: [
-      {
-        name: 'Currency',
-        value: '' + user['Currency'],
-      },
-    ],
-  };
-  message.channel.send({ embeds: [embeded] });
->>>>>>> 8ef5432aa0f3c075a2026fe7547be8a720435f33
 }
 
 async function registerPlayer(message) {
