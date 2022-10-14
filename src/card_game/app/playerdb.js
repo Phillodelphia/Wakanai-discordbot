@@ -11,6 +11,7 @@ function getPlayer(playerId) {
     catch (err) {
         return null;
     }
+    
 }
 //Add new player to the game
 function addPlayer(playerId) {
