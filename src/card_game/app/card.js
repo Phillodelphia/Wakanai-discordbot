@@ -1,12 +1,13 @@
 //Card metadata used when trading and collecting
 class Card {
-    constructor(name, category, rarity, damage, health) {
+    constructor(name, category, abbreviation, rarity, damage, health) {
         this.name = name;
-        this.img = "../assets/cards_img/" + name + ".png";
         this.category = category;
+        this.abbreviation = abbreviation;
         this.rarity = rarity;
         this.damage = damage;
         this.health = health;
+        this.img = "./src/card_game/app/assets/cards_img/" + abbreviation + "_" + name + ".png";
     }
     getName() {
         return this.name;

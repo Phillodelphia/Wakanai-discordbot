@@ -1,6 +1,7 @@
 {
     "NAME": "Neptuno",
     "CATEGORY":  "jonah_verse",
+    "ABBREVIATION": "JU",
     "RARITY": "S",
     "DAMAGE": "5",
     "HEALTH": "3"

@@ -189,7 +189,10 @@ async function mhr(args, message) {
 }
 
 async function cardgame(args, message) {
-  const cardCat = getCategory(args);
+
+  const cardCat = getCategory(["spy", "x", "family"]);
+  message.channel.send({files: [cardCat[0].getImg()]});
+/*   const cardCat = getCategory(args);
   args = args
     .join('_')
     .replace('_', ' ')
@@ -200,7 +203,7 @@ async function cardgame(args, message) {
     cardCat.forEach((card) => {
       message.channel.send(`${card.name}`);
     });
-  }
+  } */
 }
 
 async function registerPlayer(message) {

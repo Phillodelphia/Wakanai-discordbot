@@ -15,7 +15,7 @@ function prepCard() {
         //listing all files using forEach
         files.forEach(function (file) {
             let data = JSON.parse(fs.readFileSync(dirPath + "/" + file));
-            let card = new Card(data['NAME'], data['CATEGORY'], data['RARITY'], data['DAMAGE'], data['HEALTH']);
+            let card = new Card(data['NAME'], data['CATEGORY'], data['ABBREVIATION'], data['RARITY'], data['DAMAGE'], data['HEALTH']);
             //If new category is detected, add a new section
             if (!categoryDB[card.category]) {
                 categoryDB[card.category] = [];
