@@ -2,7 +2,8 @@ const fs = require("fs");
 const { Card } = require("../app/card.js");
 const dirPath = "src/card_game/app/cards";
 
-let rarityDB = { "S": [], "A": [], "B": [], "C": [] };
+let rarityDB = { "S": [], "A": [] };
+//, "B": [], "C": []
 let categoryDB = {};
 
 //Preparing card database for gambling
@@ -26,6 +27,7 @@ function prepCard() {
     });
 }
 
+//Get a specific category if no title is provided give all categories you can choose from
 function getCategory(title) {
     const returnList = [];
     title = title
@@ -46,4 +48,8 @@ function getCategory(title) {
     return returnList;
 }
 
-module.exports = { prepCard, getCategory };
+function getRarity() {
+    return rarityDB;
+}
+
+module.exports = { prepCard, getCategory, getRarity };

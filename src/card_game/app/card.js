@@ -7,6 +7,7 @@ class Card {
         this.rarity = rarity;
         this.damage = damage;
         this.health = health;
+        //This bit of code is veeeeeery capitilize heavy might change it in the future if it starts becoming a hassle
         this.img = "./src/card_game/app/assets/cards_img/" + abbreviation + "_" + name + ".png";
     }
     getName() {
