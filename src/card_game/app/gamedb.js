@@ -2,7 +2,8 @@ const fs = require("fs");
 const { Card } = require("../app/card.js");
 const dirPath = "src/card_game/app/cards";
 
-let rarityDB = { "S": [], "A": [], "B": [], "C": [] };
+let rarityDB = { "S": [], "A": [] };
+//, "B": [], "C": []
 let categoryDB = {};
 
 //Preparing card database for gambling
@@ -15,7 +16,7 @@ function prepCard() {
         //listing all files using forEach
         files.forEach(function (file) {
             let data = JSON.parse(fs.readFileSync(dirPath + "/" + file));
-            let card = new Card(data['NAME'], data['CATEGORY'], data['RARITY'], data['DAMAGE'], data['HEALTH']);
+            let card = new Card(data['NAME'], data['CATEGORY'], data['ABBREVIATION'], data['RARITY'], data['DAMAGE'], data['HEALTH']);
             //If new category is detected, add a new section
             if (!categoryDB[card.category]) {
                 categoryDB[card.category] = [];
@@ -26,6 +27,7 @@ function prepCard() {
     });
 }
 
+//Get a specific category if no title is provided give all categories you can choose from
 function getCategory(title) {
     const returnList = [];
     title = title
@@ -46,4 +48,8 @@ function getCategory(title) {
     return returnList;
 }
 
-module.exports = { prepCard, getCategory };
+function getRarity() {
+    return rarityDB;
+}
+
+module.exports = { prepCard, getCategory, getRarity };

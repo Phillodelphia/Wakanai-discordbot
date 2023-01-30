@@ -13,6 +13,7 @@ function getPlayer(playerId) {
     }
     
 }
+
 //Add new player to the game
 function addPlayer(playerId) {
     let playerData = JSON.stringify(template);

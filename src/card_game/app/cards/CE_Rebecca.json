@@ -1,6 +1,7 @@
 {
     "NAME": "Rebecca",
     "CATEGORY":  "cyberpunk_edgerunners",
+    "ABBREVIATION": "CE",
     "RARITY": "A",
     "DAMAGE": "5",
     "HEALTH": "3"
