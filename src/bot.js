@@ -194,7 +194,7 @@ async function cardgame(args, message) {
     .join('_')
     .replace('_', ' ')
     .toUpperCase();
-  if (cardCat == null) { message.channel.send(`Sorry @${message.author.username}. The category inputted is made up in your head. Please make sure to input an actual category.`) }
+  if (cardCat == null) { message.channel.send(`Have you lost a braincell ${message.author.username}? The category inputted is made up in your head. Please make sure to input an actual category.`) }
   else {
     message.channel.send(`Category: ${args}`);
     cardCat.forEach((card) => {
